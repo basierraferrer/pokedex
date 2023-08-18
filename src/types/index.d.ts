@@ -6,3 +6,6 @@ export interface IPokemonDetail {
   type: string
 }
 
+export interface ITypeColors {
+  [key: string]: string
+}

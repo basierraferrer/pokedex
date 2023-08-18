@@ -2,8 +2,15 @@ import React from 'react'
 import { capitalize } from 'lodash'
 import { View, Text, StyleSheet, TouchableWithoutFeedback, Image } from 'react-native'
 import { IPokemonDetail } from '../../types'
+import { getColorByType } from '../../utils/getColor'
 
 export default function PokemonCard({ id, image, name, order, type }: IPokemonDetail) {
+
+  const bgCard = {
+    backgroundColor: getColorByType(type),
+    ...styles.bgStyle
+  }
+
   const onPress = () => {
     console.log(`Go to ${name} ...`);
   }
@@ -11,7 +18,7 @@ export default function PokemonCard({ id, image, name, order, type }: IPokemonDe
     <TouchableWithoutFeedback onPress={onPress} >
       <View style={styles.card}>
         <View style={styles.spacing}>
-          <View style={styles.bgColor}>
+          <View style={bgCard}>
             <Text style={styles.number}>#{`${order}`.padStart(3, '0')}</Text>
             <Text style={styles.name}>{capitalize(name)}</Text>
             <Image source={{ uri: image }} style={styles.image} />
@@ -32,8 +39,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 5
   },
-  bgColor: {
-    backgroundColor: "grey"
+  bgStyle: {
+    borderRadius: 15,
+    flex: 1,
+    padding: 10
   },
   number: {
     color: '#fff',
