@@ -1,10 +1,11 @@
 import React from 'react'
-import { SafeAreaView, Text } from 'react-native'
+import { SafeAreaView } from 'react-native'
+import Pokedex from '../views/Podedex/Pokedex'
 
 export default function PokedexScreen() {
   return (
     <SafeAreaView>
-      <Text>PokedexScreen</Text>
+      <Pokedex />
     </SafeAreaView>
   )
 }
