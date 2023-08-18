@@ -5,7 +5,7 @@ import { IPokemonDetail } from "../../../../types";
 export function usePokedex() {
   const [pokemonList, setPokemonList] = useState<IPokemonDetail[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState<Error | null>(null)
+  const [hasError, setHasError] = useState<Error | undefined>(undefined)
 
   const loadPokemons = async () => {
     try {
