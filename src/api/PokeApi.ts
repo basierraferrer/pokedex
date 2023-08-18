@@ -10,9 +10,9 @@ interface ResultPokeAPI {
   }[]
 }
 
-export async function getPokemonsApi() {
+export async function getPokemonsApi(nextUrl?: string) {
   try {
-    const url = `${Config.API_URL}/pokemon?limit=20&offset=0`;
+    const url = nextUrl ? nextUrl : `${Config.API_URL}/pokemon?limit=20&offset=0`;
     const response = await fetch(url);
     const result = await response.json() as ResultPokeAPI;
     return result;

@@ -6,11 +6,13 @@ export function usePokedex() {
   const [pokemonList, setPokemonList] = useState<IPokemonDetail[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState<Error | undefined>(undefined)
+  const [nextUrl, setNextUrl] = useState<string | undefined>(undefined);
 
   const loadPokemons = async () => {
     try {
       setIsLoading(true);
-      const result = await getPokemonsApi();
+      const result = await getPokemonsApi(nextUrl);
+      setNextUrl(result.next);
 
       const pokemonArray: IPokemonDetail[] = await Promise.all(
         result.results.map(async (item) => {
@@ -38,5 +40,5 @@ export function usePokedex() {
     if (!isLoading) loadPokemons();
   }, [])
 
-  return { pokemonList, isLoading, hasError };
+  return { pokemonList, isLoading, hasError, nextUrl, loadPokemons };
 }
