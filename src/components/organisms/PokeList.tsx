@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ActivityIndicator, FlatList, StyleSheet } from 'react-native';
 import { IPokemonDetail } from '../../types';
+import PokemonCard from '../molecules/PokemonCard';
 
 interface PokeListProps {
   isLoading?: boolean,
@@ -22,7 +23,7 @@ export default function PokeList({ isLoading, list, hasError }: PokeListProps) {
       numColumns={2}
       showsVerticalScrollIndicator={false}
       keyExtractor={(item) => String(item.id)}
-      renderItem={({ item }) => <Text key={item.id}>{item.name}</Text>}
+      renderItem={({ item }) => <PokemonCard {...item} />}
       style={styles.flatListContainer}
     />
   )
