@@ -12,7 +12,6 @@ export function usePokedex() {
     try {
       setIsLoading(true);
       const result = await getPokemonsApi(nextUrl);
-      console.log("🚀 ~ file: usePokedex.ts:15 ~ loadPokemons ~ nextUrl:", nextUrl);
       setNextUrl(result.next);
 
       const pokemonArray: IPokemonDetail[] = await Promise.all(
