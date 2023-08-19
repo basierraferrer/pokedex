@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, ActivityIndicator, FlatList, StyleSheet, Platform } from 'react-native';
 import { IPokemonDetail } from '../../types';
 import PokemonCard from '../molecules/PokemonCard';
-import { hasIn } from 'lodash';
 
 interface PokeListProps {
   isLoading: boolean,
@@ -13,11 +12,11 @@ interface PokeListProps {
 }
 
 export default function PokeList({ isLoading, list, hasError, hasMore, loadMoreItems }: PokeListProps) {
-
-  if (isLoading)
+  // if is loading and its the first time
+  if (isLoading && !list.length)
     return <ActivityIndicator />
-
-  if (hasError)
+  // has error and no have elements to show
+  if (hasError && !list.length)
     return <Text>No Data: Error</Text>
 
   const loadMore = () => {

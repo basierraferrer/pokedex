@@ -2,15 +2,15 @@ import Config from "react-native-config";
 
 interface ResultPokeAPI {
   count: number,
-  next?: string,
-  previus?: string,
+  next: string | null,
+  previus: string | null,
   results: {
     name: string,
     url: string
   }[]
 }
 
-export async function getPokemonsApi(nextUrl?: string) {
+export async function getPokemonsApi(nextUrl: string | null) {
   try {
     const url = nextUrl ? nextUrl : `${Config.API_URL}/pokemon?limit=20&offset=0`;
     const response = await fetch(url);
