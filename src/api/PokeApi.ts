@@ -1,4 +1,5 @@
 import Config from "react-native-config";
+import { Pokemon } from "./types/api";
 
 interface ResultPokeAPI {
   count: number,
@@ -26,6 +27,17 @@ export async function getPokemonDetailByUrlApi(url: string) {
     const response = await fetch(url);
     const result = await response.json();
     return result;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getPokemonDetailsApi(id: number) {
+  try {
+    const url = `${Config.API_URL}/pokemon/${id}`;
+    const response = await fetch(url);
+    const result = await response.json();
+    return result as Pokemon;
   } catch (error) {
     throw error;
   }

@@ -9,7 +9,7 @@ export default function PokedexScreen({ navigation }: NativeStackScreenProps<TSt
     navigation.navigate('Pokemon', { id, name })
   }
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <Pokedex goToDetail={goToDetail} />
     </SafeAreaView>
   )

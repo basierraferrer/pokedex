@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import PokeStackNavigation from './StackNavigation';
+import NativeStackNavigation from './NativeStackNavigation';
 
 import AccountScreen from '../components/screens/Account';
 import FavoriteScreen from '../components/screens/Favorites';
@@ -20,13 +20,14 @@ export default function Navigation() {
         options={
           {
             title: "Favoritos",
+            headerTitleAlign: 'center',
             tabBarIcon: ({ color, size }) => <Icon name="heart" color={color} size={size} />
           }
         }
       />
       <Tab.Screen
         name="Main"
-        component={PokeStackNavigation}
+        component={NativeStackNavigation}
         options={
           {
             title: '',
@@ -41,6 +42,7 @@ export default function Navigation() {
         options={
           {
             title: 'Mi cuenta',
+            headerTitleAlign: 'center',
             tabBarIcon: ({ color, size }) => <Icon name="user" color={color} size={size} />
           }
         }

@@ -3,13 +3,12 @@ import { capitalize } from 'lodash';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { TStackParams } from '../types';
-import BackButton from '../components/atoms/BackButton';
 import PokedexScreen from '../components/screens/Pokedex';
 import PokemonScreen from '../components/screens/Pokemon';
 
 const Stack = createNativeStackNavigator<TStackParams>();
 
-export default function StackNavigation() {
+export default function NativeStackNavigation() {
   return (
     <Stack.Navigator initialRouteName="Pokedex">
       <Stack.Screen
@@ -28,7 +27,8 @@ export default function StackNavigation() {
         options={
           ({ route }) => ({
             title: capitalize(route.params.name),
-            animation: 'slide_from_right'
+            headerTitleAlign: 'center',
+            animation: 'slide_from_right',
           })
         }
       />
