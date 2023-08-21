@@ -4,14 +4,15 @@ import { IPokemonDetail } from '../../types';
 import PokemonCard from '../molecules/PokemonCard';
 
 interface PokeListProps {
-  isLoading: boolean,
-  list: IPokemonDetail[],
-  hasError?: Error,
+  isLoading: boolean
+  list: IPokemonDetail[]
+  hasError?: Error
   hasMore: boolean
   loadMoreItems: () => Promise<void>
+  goToDetail: (id: number, name: string) => void
 }
 
-export default function PokeList({ isLoading, list, hasError, hasMore, loadMoreItems }: PokeListProps) {
+export default function PokeList({ isLoading, list, hasError, hasMore, loadMoreItems, goToDetail }: PokeListProps) {
   // if is loading and its the first time
   if (isLoading && !list.length)
     return <ActivityIndicator />
@@ -29,7 +30,7 @@ export default function PokeList({ isLoading, list, hasError, hasMore, loadMoreI
       numColumns={2}
       showsVerticalScrollIndicator={false}
       keyExtractor={(item) => String(item.id)}
-      renderItem={({ item }) => <PokemonCard {...item} />}
+      renderItem={({ item }) => <PokemonCard {...item} onPress={goToDetail} />}
       style={styles.flatListContainer}
       onEndReached={loadMore}
       ListFooterComponent={isLoading &&

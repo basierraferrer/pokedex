@@ -9,3 +9,11 @@ export interface IPokemonDetail {
 export interface ITypeColors {
   [key: string]: string
 }
+
+export type TStackParams = {
+  Pokedex: undefined,
+  Pokemon: {
+    id: number,
+    name: string
+  }
+} 

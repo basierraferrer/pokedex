@@ -25,7 +25,7 @@ export default function Navigation() {
         }
       />
       <Tab.Screen
-        name="Pokedex"
+        name="Main"
         component={PokeStackNavigation}
         options={
           {

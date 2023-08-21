@@ -4,18 +4,22 @@ import { View, Text, StyleSheet, TouchableWithoutFeedback, Image } from 'react-n
 import { IPokemonDetail } from '../../types'
 import { getColorByType } from '../../utils/getColor'
 
-export default function PokemonCard({ id, image, name, order, type }: IPokemonDetail) {
+interface IPokemonDetailProps extends IPokemonDetail {
+  onPress: (id: number, name: string) => void
+}
+
+export default function PokemonCard({ id, image, name, order, onPress, type }: IPokemonDetailProps) {
 
   const bgCard = {
     backgroundColor: getColorByType(type),
     ...styles.bgStyle
   }
 
-  const onPress = () => {
-    console.log(`Go to ${name} ...`);
+  const handleOnPress = () => {
+    onPress(id, name);
   }
   return (
-    <TouchableWithoutFeedback onPress={onPress} >
+    <TouchableWithoutFeedback onPress={handleOnPress} >
       <View style={styles.card}>
         <View style={styles.spacing}>
           <View style={bgCard}>
